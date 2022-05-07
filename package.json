@@ -1,0 +1,7 @@
+{
+  "name": "tezonacci",
+  "workspaces": [
+    "packages/contracts",
+    "packages/dapp"
+  ]
+}

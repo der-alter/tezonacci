@@ -1,23 +1,33 @@
-SHELL := /bin/bash
+include scripts/help.Mk
 
-help:
-	@grep -E '^[ a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
-	awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
+MAKE_CONTRACTS=$(MAKE) -C packages/contracts/
 
-install: ## install dependencies
-	@cd ./dapp \
+install: ##Dependencies install dependencies
+	@cd ./packages/dapp \
 		&& if [ ! -f ./.env ]; then cp .env.dist .env ; fi \
-		&& yarn \
-		&& cd -
+		&& cd - \
+        && cd ./packages/contracts \
+        && make install \
+        && cd - \
+        && npm i
 
-contracts-compile: ## compile contracts
-	@chinstrap compile
+clean: ##@Misc cleanup everything
+	@git clean -fX
 
-contracts-deploy: ## deploy contracts
-	@chinstrap originate
+dapp-start: ##@DApp start dapp
+	@npm start -w @tezonacci/dapp
 
-dapp-start: ## start dapp
-	@yarn --cwd ./dapp start
+sandbox-start: ##@Infra start sandbox
+	@./scripts/run-sandbox
 
-sandbox-start: ## start sandbox
-	@chinstrap sandbox -p Ithaca -o 20000 -c 5
+sandbox-stop: ##@Infra stop sandbox
+	@docker stop sandbox
+
+contracts-compile: ##@Contracts compile contracts
+	@$(MAKE_CONTRACTS) compile
+
+contracts-test: ##@Contracts test contracts
+	@$(MAKE_CONTRACTS) test
+
+contracts-deploy: ##@Contracts deploy contracts
+	@$(MAKE_CONTRACTS) deploy

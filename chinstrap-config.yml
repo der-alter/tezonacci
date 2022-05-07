@@ -1,9 +1,0 @@
-chinstrap:
-  network:
-    development:
-      host: http://localhost:20000
-      accounts:
-        - privateKeyFile: ./.secret
-  compiler:
-    lang: cameligo
-    test: cameligo

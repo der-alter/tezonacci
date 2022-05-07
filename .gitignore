@@ -1,3 +1,7 @@
-/build
-/dapp/node_modules
-/dapp/.env
+build
+node_modules
+.env
+compiled/
+.ligo/
+_esy/
+scripts/metadata.json
