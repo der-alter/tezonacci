@@ -14,6 +14,9 @@ install: ##Dependencies install dependencies
 clean: ##@Misc cleanup everything
 	@git clean -fX
 
+conf: ##@Misc switch node config
+	./scripts/conf.sh
+
 dapp-start: ##@DApp start dapp
 	@npm start -w @tezonacci/dapp
 

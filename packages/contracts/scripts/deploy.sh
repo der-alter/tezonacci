@@ -10,8 +10,11 @@ run() {
 
     for file in $migrations; do
         f=$(basename "$file")
-        echo "$f"
-        npx ts-node  "${MIGRATIONS_DIR}/${f}"
+        ext=${f##*.}
+        if [[ "$ext" == "ts" ]]; then
+            echo "$f"
+            npx ts-node "${MIGRATIONS_DIR}/${f}"
+        fi
     done
 }
 

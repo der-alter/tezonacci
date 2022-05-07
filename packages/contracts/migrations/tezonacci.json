@@ -1,0 +1,19 @@
+{
+    "name": "Tezonacci",
+    "description": "An Experimental Contract",
+    "version": "beta",
+    "license": {
+        "name": "MIT"
+    },
+    "authors": [
+        "der-alter <staivenj@protonmail.com>"
+    ],
+    "homepage": "https://github.com/der-alter/tezonacci",
+    "source": {
+        "tools": "cameligo",
+        "location": "https://github.com/der-alter/tezonacci/packages/contracts/src"
+    },
+    "interfaces": [
+        "TZIP-016"
+    ]
+}
