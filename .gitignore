@@ -4,4 +4,4 @@ node_modules
 compiled/
 .ligo/
 _esy/
-scripts/metadata.json
+deployments

@@ -34,4 +34,4 @@ test: ##@Contracts run tests
 	@$(call test,main.test.mligo)
 
 deploy: ##@Contracts deploy
-	@npx ts-node ./scripts/deploy.ts
+	@./scripts/deploy.sh
